@@ -11,6 +11,9 @@ import emoji from '../assets/emoji.png';
 import mic from '../assets/mic.png';
 import img from '../assets/img.png';
 import camera from '../assets/camera.png';
+import download from '../assets/download.png';
+import arrowUp from '../assets/arrowUp.png';
+import arrowDown from '../assets/arrowDown.png';
 
 export{
     avatar,
@@ -25,6 +28,9 @@ export{
     emoji,
     mic,
     img,
-    camera
+    camera,
+    download,
+    arrowUp,
+    arrowDown,
 
 }
