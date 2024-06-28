@@ -1,5 +1,5 @@
 {{
-  simple it will help to go the last reaction page without re-render or refreshing the website...like in chat app ,we open the messges of a person ,the msesssge will automatically comes to lastest or new messgae...for this task we use useRef hool..for this we have to use property which is "current"
+  simple it will help to go the last reaction page without re-render or refreshing the website...like in chat app ,we open the messges of a person ,the msesssge will automatically comes to lastest or new messgae...for this task we use useRef hool..for this we have to use property which is "current", and we have to declare as "{endref}"
 }} 
 
 
