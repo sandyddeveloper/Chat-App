@@ -16,26 +16,67 @@ const Details = () => {
             <img src={arrowUp} alt="" />
           </div>
         </div>
+      </div>
+      <div className="info">
+        <div className="option">
+          <div className="title">
+            <span>Privacy</span>
+            <img src={arrowUp} alt="" />
+          </div>
         </div>
-        <div className="info">
-          <div className="option">
-            <div className="title">
-              <span>Privacy</span>
-              <img src={arrowUp} alt="" />
+      </div>
+      <div className="info">
+        <div className="option">
+          <div className="title">
+            <span>Photos</span>
+            <img src={arrowDown} alt="" />
+          </div>
+          <div className="photos">
+            <div className="photoItem">
+              <div className="photoDetail">
+              <img src="https://c4.wallpaperflare.com/wallpaper/14/548/927/the-avengers-avengers-endgame-avengers-endgame-infinity-gauntlet-iron-man-hd-wallpaper-preview.jpg" alt=""  />
+              <span>ironman_01.png</span>
+              </div>
+            <img src={download} alt="" className='icon'/>
             </div>
+            <div className="photoItem">
+              <div className="photoDetail">
+              <img src="https://c4.wallpaperflare.com/wallpaper/14/548/927/the-avengers-avengers-endgame-avengers-endgame-infinity-gauntlet-iron-man-hd-wallpaper-preview.jpg" alt="" />
+              <span>ironman_01.png</span>
+              </div>
+            <img src={download} alt="" className='icon'/>
             </div>
-          </div> 
+            <div className="photoItem">
+              <div className="photoDetail">
+              <img src="https://c4.wallpaperflare.com/wallpaper/14/548/927/the-avengers-avengers-endgame-avengers-endgame-infinity-gauntlet-iron-man-hd-wallpaper-preview.jpg" alt="" />
+              <span>ironman_01.png</span>
+              </div>
+            <img src={download} alt="" className='icon'/>
+            </div>
+            <div className="photoItem">
+              <div className="photoDetail">
+              <img src="https://c4.wallpaperflare.com/wallpaper/14/548/927/the-avengers-avengers-endgame-avengers-endgame-infinity-gauntlet-iron-man-hd-wallpaper-preview.jpg" alt="" />
+              <span>ironman_01.png</span>
+              </div>
+            <img src={download} alt="" className='icon' />
+            </div>
+          </div>
           <div className="info">
             <div className="option">
               <div className="title">
-                <span>Shared Photos</span>
+                <span>Media</span>
                 <img src={arrowUp} alt="" />
               </div>
             </div>
           </div>
         </div>
-    
-    
+        <button>Block</button>
+        <button className='logout'>Logout</button>
+      </div>
+      
+    </div>
+
+
 
   )
 }
