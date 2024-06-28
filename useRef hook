@@ -1,0 +1,92 @@
+{{
+  simple it will help to go the last reaction page without re-render or refreshing the website...like in chat app ,we open the messges of a person ,the msesssge will automatically comes to lastest or new messgae...for this task we use useRef hool..for this we have to use property which is "current", and we have to declare as "{endref}"
+}} 
+
+
+
+The `useRef` hook in React is a very useful tool that allows you to persist values across renders without causing a re-render when the value changes. It's often used for accessing and interacting with DOM elements directly or for storing any mutable value that doesn't affect the rendering process.
+
+### Key Points:
+1. **Creating a Ref**:
+   - `useRef` returns a mutable object with a `.current` property.
+   - This object remains the same between renders.
+
+2. **Accessing DOM Elements**:
+   - You can attach a `ref` to a DOM element to access it directly.
+
+3. **Storing Mutable Values**:
+   - You can use `useRef` to keep track of a value that doesn't need to trigger a re-render when it changes.
+
+### Syntax:
+```javascript
+const myRef = useRef(initialValue);
+```
+
+### Example 1: Accessing a DOM Element
+Let's say you want to focus an input field when a button is clicked. Here's how you can do it with `useRef`.
+
+```javascript
+import React, { useRef } from 'react';
+
+function App() {
+  const inputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" placeholder="Focus me on button click" />
+      <button onClick={handleButtonClick}>Focus Input</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Explanation:
+- `useRef(null)` creates a ref object with `current` property initially set to `null`.
+- The `ref={inputRef}` attribute attaches the `inputRef` to the input element.
+- `inputRef.current.focus()` is called when the button is clicked, focusing the input.
+
+### Example 2: Storing a Mutable Value
+You can use `useRef` to keep track of a value without causing re-renders. For instance, you might want to keep track of the number of times a button was clicked.
+
+```javascript
+import React, { useRef } from 'react';
+
+function ClickCounter() {
+  const countRef = useRef(0);
+
+  const handleClick = () => {
+    countRef.current += 1;
+    console.log(`Button clicked ${countRef.current} times`);
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick}>Click Me</button>
+    </div>
+  );
+}
+
+export default ClickCounter;
+```
+
+### Explanation:
+- `useRef(0)` initializes the ref object with `current` set to `0`.
+- Each time the button is clicked, `countRef.current` is incremented.
+- This does not cause the component to re-render, but you can still see the updated count in the console.
+
+### When to Use `useRef`:
+- Accessing and interacting with DOM elements directly.
+- Storing any mutable value that needs to persist across renders but doesn't require causing a re-render when updated.
+- Implementing a `setTimeout` or `setInterval` where you need to clear the timer later.
+
+### Remember:
+- `useRef` doesn't cause a component to re-render when the `.current` property changes.
+- It's a good alternative to instance variables in class components for functional components.
+
+With these basics, you should be able to start using `useRef` in your React projects to handle both DOM element references and mutable values efficiently.
