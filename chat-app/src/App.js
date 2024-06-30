@@ -3,15 +3,15 @@ import { ChatList, Chats, Details, Login, Notification} from './utils/components
 
 export default function App() {
 
-  // const user = true;
+  const user = true;
 
   return (
     <div className='App_container'>
-      <ChatList />
+      {/* <ChatList />
             <Chats />
-            <Details />
+            <Details /> */}
 
-      {/* {
+       {
         user ? (
           <>
             <ChatList />
@@ -19,7 +19,7 @@ export default function App() {
             <Details />
           </>) : (<Login />
         )
-      } */}
+      } 
       <Notification/>
     </div>
   )

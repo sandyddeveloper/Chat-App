@@ -1,6 +1,7 @@
 import './userlist.css'
 import { search, plus, minus, avatar } from '../../../utils/asset'
 import { useState } from 'react'
+import AddUser from '../../AddUser/AddUser';
 
 const UserList = () => {
   const [addMode, setAddMode] = useState(false);
@@ -40,6 +41,7 @@ const UserList = () => {
           <p>Hey There!</p>
         </div>
       </div>
+      { addMode && <AddUser/>}
     </div>
   )
 }

@@ -5,6 +5,7 @@ import UserInfo from '../Components/ChatList/UserInfo/UserInfo';
 import UserList from '../Components/ChatList/UserList/UserList';
 import Login from '../Components/Login/Login';
 import Notification from '../Components/Notification/Notification';
+import AddUser from '../Components/AddUser/AddUser';
 
 
 export{
@@ -15,4 +16,5 @@ export{
     UserList,
     Login,
     Notification,
+    AddUser,
 }
