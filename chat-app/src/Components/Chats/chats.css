@@ -132,18 +132,18 @@
             height: 20px;
             cursor: pointer;
         }
+        input{
+           flex: 1;
+           background-color: rgba(17,25,40,0.5);
+           border: none;
+           outline: none;
+           color: white;
+           padding: 13px;
+           border-radius: 10px;
+           font-size: 12px;
+    }
      }
 
-     input{
-        flex: 1;
-        background-color: rgba(17,25,40,0.5);
-        border: none;
-        outline: none;
-        color: white;
-        padding: 13px;
-        border-radius: 10px;
-        font-size: 12px;
- }
  .emoji{
     position: relative;
  
