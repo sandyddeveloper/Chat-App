@@ -1,40 +1,70 @@
-import { useState } from 'react'
-import './login.css'
-import {avatar} from '../../utils/asset';
-// import { toast } from 'react-toastify';
+import { useState } from 'react';
+import './login.css';
+import { avatar } from '../../utils/asset';
+import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../../lib/Firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 const Login = () => {
- // i m juz create the obj to declare 
+  // I just create the object to declare 
   const [avatars, setAvatar] = useState({
-    file : null,
-    url : ""
-})
+    file: null,
+    url: ""
+  });
 
-const handleAvatar = e =>
-  // here i have declared that if the files [0] "1st index of pic" where selected na thn it should in webpage adhuku dha idha url ah generate oandra mathiri select panni iruken..
-  {
-    if(e.target.files[0]){
-
+  const handleAvatar = e => {
+    // Here I have declared that if the files [0] "1st index of pic" where selected na thn it should in webpage adhuku dha idha url ah generate oandra mathiri select panni iruken..
+    if (e.target.files[0]) {
       setAvatar({
-        file:e.target.files[0],
-        url : URL.createObjectURL(e.target.files[0])
-      })
+        file: e.target.files[0],
+        url: URL.createObjectURL(e.target.files[0])
+      });
     }
+  };
 
-  }
-const handleSubmit = e=>
-{
-  e.preventDefault()
-  
-}
+
+  //refer formDataobj notes for explaintion for thi handleRegister functions
+  const handleRegister = async e => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const formDataObj = Object.fromEntries(formData.entries());
+    const { username, email, NewPassword } = formDataObj;
+    console.log(username);
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, NewPassword);
+
+      await setDoc(doc(db, "users", res.user.uid),{
+        username,
+        email,
+        id: res.user.uid ,
+        blocked: [],
+      });
+
+      await setDoc(doc(db, "usercharts", res.user.uid),{
+        charts:[] 
+      });
+
+      
+      toast.success("Account Created Succesfully")
+    } catch (err) {
+      console.log(err);
+      toast.error(err);
+    }
+  };
+
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
 
   return (
-   
     <div className="login">
       <div className="item">
         <h2>Welcome Back, Cheft</h2>
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder='Enter Your Email'  name='email' autoComplete='email'/>
+          <input type="email" placeholder='Enter Your Email' name='email' autoComplete='email' />
           <input type="password" placeholder="Password" name="password" autoComplete="current-password" />
           <button>Sign In</button>
         </form>
@@ -42,12 +72,13 @@ const handleSubmit = e=>
       <div className="separator"></div>
       <div className="item">
         <h2>Create The Account, Cheft</h2>
-        <form >
-          {/* im juzt declaring the file to upload but ennaku adha input vrathukuda nu i juz used lable and adha input ah hide pannita by using display:"none " nu   */}
+        <form onSubmit={handleRegister}>
+          {/* I'm just declaring the file to upload, but to hide the input element, I used a label and set input's display to "none". */}
           <label htmlFor="file">
-          <img src={avatars.url || avatar} alt="" />
-          Upload an image (Click)</label>
-          <input type="file" id='file' style={{display:"none"}} onChange={handleAvatar}/>
+            <img src={avatars.url || avatar} alt="" />
+            Upload an image (Click)
+          </label>
+          <input type="file" id='file' style={{ display: "none" }} onChange={handleAvatar} />
           <input type="text" placeholder='username' name='username' />
           <input type="email" placeholder='Enter Your Email' name='email' autoComplete='new-email' />
           <input type="password" placeholder="Password" name="NewPassword" autoComplete="new-password" />
@@ -55,9 +86,7 @@ const handleSubmit = e=>
         </form>
       </div>
     </div>
-    
-    
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

@@ -3,7 +3,7 @@ import { ChatList, Chats, Details, Login, Notification} from './utils/components
 
 export default function App() {
 
-  const user = true;
+  const user = false;
 
   return (
     <div className='App_container'>
