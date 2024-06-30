@@ -1,0 +1,22 @@
+In React, `e.preventDefault()` is used to prevent the default behavior of an event. This method is typically called within event handlers to stop the default action that the browser would normally take in response to that event. For example, preventing a form from submitting or a link from navigating to a new URL.
+
+Here's a basic example of how you might use `e.preventDefault()` in a React component:
+
+
+import React from 'react';
+
+const MyComponent = () => {
+  const handleClick = (e) => {
+    e.preventDefault(); // Prevents the default behavior of the click event
+    console.log('Button clicked!');
+    // Other logic you want to execute instead of the default behavior
+  };
+
+  return (
+    <button onClick={handleClick}>Click Me</button>
+  );
+};
+
+export default MyComponent;
+
+In this example, when the button is clicked, `handleClick` is called with the click event (`e`). `e.preventDefault()` prevents the button from triggering a form submission or navigating away from the current page, allowing you to handle the click event as needed within your component.
