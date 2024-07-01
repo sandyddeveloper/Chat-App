@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { ChatList, Chats, Details, Login, Notification} from './utils/components'
 
 export default function App() {

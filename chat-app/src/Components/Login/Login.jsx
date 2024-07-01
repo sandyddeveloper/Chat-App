@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../lib/Firebase';
 import { doc, setDoc } from 'firebase/firestore';
+import { profile } from '../../lib/ProfileUpload';
 
 const Login = () => {
   // I just create the object to declare 
@@ -15,6 +16,7 @@ const Login = () => {
 
   const handleAvatar = e => {
     // Here I have declared that if the files [0] "1st index of pic" where selected na thn it should in webpage adhuku dha idha url ah generate oandra mathiri select panni iruken..
+
     if (e.target.files[0]) {
       setAvatar({
         file: e.target.files[0],
@@ -34,19 +36,21 @@ const Login = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, NewPassword);
 
-      await setDoc(doc(db, "users", res.user.uid),{
+      const imgURL = await profile(avatars.file);
+
+      await setDoc(doc(db, "users", res.user.uid), {
         username,
         email,
-        id: res.user.uid ,
+        avatars : imgURL,
+        id: res.user.uid,
         blocked: [],
       });
 
-      await setDoc(doc(db, "usercharts", res.user.uid),{
-        charts:[] 
+      await setDoc(doc(db, "usercharts", res.user.uid), {
+        charts: []
+        
       });
-
-      
-      toast.success("Account Created Succesfully")
+       toast.success("Account Created Succesfully");
     } catch (err) {
       console.log(err);
       toast.error(err);
