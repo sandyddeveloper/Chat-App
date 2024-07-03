@@ -1,0 +1,60 @@
+Sure, let's break down the `handleRegister` function step by step for beginners:
+
+```javascript
+const handleRegister = e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const formDataObj = Object.fromEntries(formData.entries());
+  const { username, email, password } = formDataObj;
+  console.log(username, email, password);
+};
+```
+
+### Explanation:
+
+1. **Function Declaration:**
+   ```javascript
+   const handleRegister = e => { ... }
+   ```
+   This line declares a function named `handleRegister`. The `e` parameter represents the event object that gets passed when the form is submitted.
+
+2. **Prevent Default Form Submission:**
+   ```javascript
+   e.preventDefault();
+   ```
+   When a form is submitted, it triggers a page reload by default. `e.preventDefault()` prevents this default behavior so we can handle the form submission with JavaScript instead.
+
+3. **Creating a FormData Object:**
+   ```javascript
+   const formData = new FormData(e.target);
+   ```
+   `FormData` is a built-in JavaScript object that allows us to easily construct a set of key/value pairs representing form fields and their values. `e.target` refers to the form element that triggered the submit event. This line creates a `FormData` object containing all the data from the form.
+
+4. **Converting FormData to a Regular Object:**
+   ```javascript
+   const formDataObj = Object.fromEntries(formData.entries());
+   ```
+   `formData.entries()` returns an iterator of all the key/value pairs in the `FormData` object. `Object.fromEntries()` takes this iterator and converts it into a regular JavaScript object where each form field name is a key and its corresponding value is the value of that key. For example, if the form contains fields with the names "username", "email", and "password", the resulting object will look like this:
+   ```javascript
+   {
+     username: 'someUsername',
+     email: 'someEmail@example.com',
+     password: 'somePassword'
+   }
+   ```
+
+5. **Destructuring the Object:**
+   ```javascript
+   const { username, email, password } = formDataObj;
+   ```
+   This line uses object destructuring to extract the `username`, `email`, and `password` properties from `formDataObj` and assigns them to variables with the same names. 
+
+6. **Logging the Values:**
+   ```javascript
+   console.log(username, email, password);
+   ```
+   Finally, this line logs the values of `username`, `email`, and `password` to the console. This is useful for debugging to check if the form data has been captured correctly.
+
+### Putting It All Together:
+
+When a user fills out the form and clicks the submit button, the `handleRegister` function is triggered. It prevents the default form submission behavior, gathers all the form data into a `FormData` object, converts that object into a plain JavaScript object, extracts the relevant form fields, and logs their values to the console. This allows you to then use this data to send to a server or perform other actions as needed.
