@@ -3,13 +3,16 @@ import {avatar,
   moreIcon,
   videoIcon,
   editIcon} from '../../../utils/asset'
+import { useUserStore } from '../../../lib/AppStore';
 
 const UserInfo = () => {
+  const { currentUser } = useUserStore();
+
   return (
     <div className='userInfo'>
       <div className="userid">
-        <img src={avatar} alt="User avatar" />
-        <h4>Sandy</h4>
+        <img src={currentUser.avatars || avatar} alt="User avatar" />
+        <h4>{currentUser.username}</h4>
       </div>
 
       <div className="settings">
